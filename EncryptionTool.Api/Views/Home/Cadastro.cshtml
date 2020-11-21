@@ -1,0 +1,49 @@
+﻿@model EncryptionTool.Domain.Entities.Usuario
+@{
+
+    ViewData["Title"] = "Cadastre";
+}
+<div class="card mt-5 bg-light col-6" style="margin:0 auto">
+    <div class="card-body">
+        <div class="">
+            <form asp-action="Cadastro" asp-controller="Home" method="post">
+                @if (TempData["MSG_S"] != null)
+                {
+                    <p class="alert alert-success">@TempData["MSG_S"]</p>
+
+                }
+                @if (TempData["MSG_E"] != null)
+                {
+                    <p class="alert alert-danger">@Html.Raw(TempData["MSG_E"])</p>
+
+                }
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Nome.PrimeiroNome">Nome</label>
+                        <input type="text" asp-for="Nome.PrimeiroNome" class="form-control">
+                        <span class="text-danger small" asp-validation-for="Nome.PrimeiroNome"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Nome.UltimoNome">Sobrenome</label>
+                        <input type="text" asp-for="Nome.UltimoNome" class="form-control">
+                        <span class="text-danger small" asp-validation-for="Nome.UltimoNome"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email">Email</label>
+                    <input type="email" class="form-control" asp-for="Email">
+                    <span class="text-danger small" asp-validation-for="Email"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Senha">Senha</label>
+                    <input type="password" class="form-control" asp-for="Senha">
+                    <span class="text-danger small" asp-validation-for="Senha"></span>
+                </div>
+
+                <div class="mb-5 justify-content-between">
+                    <button type="submit" class="btn btn-primary col-12">Enviar</button>
+                </div>
+            </form>
+        </div>
+     </div>
+ </div>

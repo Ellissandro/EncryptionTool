@@ -1,0 +1,43 @@
+﻿@if (TempData["MSG_S"] != null)
+{
+    <p class="alert alert-success">@TempData["MSG_S"]</p>
+
+}
+@if (TempData["MSG_E"] != null)
+{
+    <p class="alert alert-danger">@TempData["MSG_E"]</p>
+}
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">
+                <div class="spinner-grow" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </th>
+            <th scope="col">Nome</th>
+            <th scope="col">Sobrenome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Senha</th>
+            <th scope="col">Senha Criptografada</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    @{var i = 1;}
+    @foreach (var item in Model)
+
+    {
+        <tbody>
+            <tr>
+                <th scope="row">@i</th>
+                <td>@item.Nome.PrimeiroNome</td>
+                <td>@item.Nome.UltimoNome</td>
+                <td>@item.Email</td>
+                <td>@item.Senha</td>
+                <td>@item.SenhaCriptografada</td>
+                <td><a asp-action="Excluir" asp-route-id="@item.Id" class="btn btn-danger">Excluir</a></td>
+            </tr>
+        </tbody>
+        i++;
+    }
+</table>
